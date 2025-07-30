@@ -1,0 +1,5 @@
+[2,"\n"]
+[1,"pandoc \n  to: html\n  output-file: index.html\n  standalone: true\n  title-prefix: Diabetes Prediction\n  section-divs: true\n  html-math-method: mathjax\n  wrap: none\n  default-image-extension: png\n  \nmetadata\n  document-css: false\n  link-citations: true\n  date-format: long\n  lang: en\n  title: 'Final Project: Diabetes Prediction'\n  \n"]
+[1,"Output created: docs\\index.html\n\nTerminating existing preview server....DONE\n\nPreparing to preview\n\r[1/2] EDA.qmd\n"]
+[1,"\r[2/2] Modeling.qmd\n"]
+[1,"GET: /index.html\n"]

@@ -1,0 +1,5 @@
+library(plumber)
+api <- pr("plumber.R")
+api$run(port = 8000)
+
+

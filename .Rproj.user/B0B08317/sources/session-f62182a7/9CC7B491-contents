@@ -1,0 +1,30 @@
+---
+title: "Final Project: Diabetes Prediction"
+format: html
+---
+
+# Final Project Summary
+
+Welcome! This is the project website for my final project on **Diabetes Prediction**  
+using the 2015 BRFSS dataset and a logistic regression model.
+
+## Project Components
+
+- [EDA for Diabetes Prediction](EDA.html)
+- [Modeling and Results](Modeling.html)
+
+## API Access
+
+The REST API is built with the `plumber` package in R.  
+You can try it locally using:
+
+```r
+library(plumber)
+api <- pr("plumber.R")
+api$run(port = 8000)
+```
+Then go to: http://127.0.0.1:8000/__docs__/
+
+Author
+Koji Takagi
+GitHub Pages: https://kojitakagi.github.io/final-project
