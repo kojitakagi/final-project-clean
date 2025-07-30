@@ -39,7 +39,7 @@
     "href": "index.html",
     "title": "Final Project: Diabetes Prediction",
     "section": "",
-    "text": "Welcome! This is the project website for my final project on Diabetes Prediction\nusing the 2015 BRFSS dataset and a logistic regression model.\n\n\n\nEDA for Diabetes Prediction\nModeling and Results\n\n\n\n\nThe REST API is built with the plumber package in R.\nYou can try it locally using:\nlibrary(plumber)\napi &lt;- pr(\"plumber.R\")\napi$run(port = 8000)\nThen go to: http://127.0.0.1:8000/docs/\nAuthor Koji Takagi GitHub Pages: https://kojitakagi.github.io/final-project"
+    "text": "Welcome! This is the project website for my final project on Diabetes Prediction\nusing the 2015 BRFSS dataset and a logistic regression model.\n\n\n\nEDA for Diabetes Prediction\nModeling and Results\n\n\n\n\nThe REST API is built with the plumber package in R.\nYou can try it locally using:\nlibrary(plumber)\napi &lt;- pr(\"plumber.R\")\napi$run(port = 8000)\nThen go to: http://127.0.0.1:8000/__docs__/\nAuthor Koji Takagi GitHub Pages: https://kojitakagi.github.io/final-project"
   },
   {
     "objectID": "index.html#project-components",
@@ -53,7 +53,7 @@
     "href": "index.html#api-access",
     "title": "Final Project: Diabetes Prediction",
     "section": "",
-    "text": "The REST API is built with the plumber package in R.\nYou can try it locally using:\nlibrary(plumber)\napi &lt;- pr(\"plumber.R\")\napi$run(port = 8000)\nThen go to: http://127.0.0.1:8000/docs/\nAuthor Koji Takagi GitHub Pages: https://kojitakagi.github.io/final-project"
+    "text": "The REST API is built with the plumber package in R.\nYou can try it locally using:\nlibrary(plumber)\napi &lt;- pr(\"plumber.R\")\napi$run(port = 8000)\nThen go to: http://127.0.0.1:8000/__docs__/\nAuthor Koji Takagi GitHub Pages: https://kojitakagi.github.io/final-project"
   },
   {
     "objectID": "Modeling.html",
