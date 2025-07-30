@@ -1,0 +1,10 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Diabetes Prediction"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home

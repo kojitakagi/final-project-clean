@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "EDA.html",
+    "href": "EDA.html",
+    "title": "EDA for Diabetes Prediction",
+    "section": "",
+    "text": "This project uses data from the 2015 Behavioral Risk Factor Surveillance System (BRFSS) to explore potential predictors of diabetes. The binary outcome variable is diabetes_binary, indicating whether a respondent has been diagnosed with diabetes. Our goal is to identify promising predictors that can be used to model the likelihood of diabetes.\nWe focus our exploratory analysis on the following three predictors:\n\nHigh Blood Pressure (high_bp): Prior studies have demonstrated a strong correlation between hypertension and diabetes.\nSmoking (smoker): Smoking has been associated with increased insulin resistance and risk of type 2 diabetes.\nPhysical Activity (phys_activity): A lack of physical activity is a known risk factor for obesity and diabetes.\n\nThese variables were selected based on both domain knowledge and practicality in terms of lifestyle-related interventions. Note: While this analysis focuses on three predictors, other potential predictors (such as BMI and cholesterol) were considered but not selected for this limited scope."
+  },
+  {
+    "objectID": "EDA.html#introduction",
+    "href": "EDA.html#introduction",
+    "title": "EDA for Diabetes Prediction",
+    "section": "",
+    "text": "This project uses data from the 2015 Behavioral Risk Factor Surveillance System (BRFSS) to explore potential predictors of diabetes. The binary outcome variable is diabetes_binary, indicating whether a respondent has been diagnosed with diabetes. Our goal is to identify promising predictors that can be used to model the likelihood of diabetes.\nWe focus our exploratory analysis on the following three predictors:\n\nHigh Blood Pressure (high_bp): Prior studies have demonstrated a strong correlation between hypertension and diabetes.\nSmoking (smoker): Smoking has been associated with increased insulin resistance and risk of type 2 diabetes.\nPhysical Activity (phys_activity): A lack of physical activity is a known risk factor for obesity and diabetes.\n\nThese variables were selected based on both domain knowledge and practicality in terms of lifestyle-related interventions. Note: While this analysis focuses on three predictors, other potential predictors (such as BMI and cholesterol) were considered but not selected for this limited scope."
+  },
+  {
+    "objectID": "EDA.html#data-preparation",
+    "href": "EDA.html#data-preparation",
+    "title": "EDA for Diabetes Prediction",
+    "section": "2. Data Preparation",
+    "text": "2. Data Preparation\n\ndf &lt;- read_csv(\"diabetes_binary_health_indicators_BRFSS2015.csv\") %&gt;%\n  clean_names()\n\n# Convert variables to appropriate types\ndf &lt;- df %&gt;%\n  mutate(\n    diabetes_binary = factor(diabetes_binary, labels = c(\"No\", \"Yes\")),\n    high_bp = factor(high_bp, levels = c(0, 1), labels = c(\"No\", \"Yes\")),\n    smoker = factor(smoker, levels = c(0, 1), labels = c(\"No\", \"Yes\")),\n    phys_activity = factor(phys_activity, levels = c(0, 1), labels = c(\"No\", \"Yes\"))\n  )\n\n# Check for missingness and basic summary\nskim(df)\n\n\nData summary\n\n\nName\ndf\n\n\nNumber of rows\n253680\n\n\nNumber of columns\n22\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nfactor\n4\n\n\nnumeric\n18\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: factor\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nordered\nn_unique\ntop_counts\n\n\n\n\ndiabetes_binary\n0\n1\nFALSE\n2\nNo: 218334, Yes: 35346\n\n\nhigh_bp\n0\n1\nFALSE\n2\nNo: 144851, Yes: 108829\n\n\nsmoker\n0\n1\nFALSE\n2\nNo: 141257, Yes: 112423\n\n\nphys_activity\n0\n1\nFALSE\n2\nYes: 191920, No: 61760\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nhigh_chol\n0\n1\n0.42\n0.49\n0\n0\n0\n1\n1\n▇▁▁▁▆\n\n\nchol_check\n0\n1\n0.96\n0.19\n0\n1\n1\n1\n1\n▁▁▁▁▇\n\n\nbmi\n0\n1\n28.38\n6.61\n12\n24\n27\n31\n98\n▇▅▁▁▁\n\n\nstroke\n0\n1\n0.04\n0.20\n0\n0\n0\n0\n1\n▇▁▁▁▁\n\n\nheart_diseaseor_attack\n0\n1\n0.09\n0.29\n0\n0\n0\n0\n1\n▇▁▁▁▁\n\n\nfruits\n0\n1\n0.63\n0.48\n0\n0\n1\n1\n1\n▅▁▁▁▇\n\n\nveggies\n0\n1\n0.81\n0.39\n0\n1\n1\n1\n1\n▂▁▁▁▇\n\n\nhvy_alcohol_consump\n0\n1\n0.06\n0.23\n0\n0\n0\n0\n1\n▇▁▁▁▁\n\n\nany_healthcare\n0\n1\n0.95\n0.22\n0\n1\n1\n1\n1\n▁▁▁▁▇\n\n\nno_docbc_cost\n0\n1\n0.08\n0.28\n0\n0\n0\n0\n1\n▇▁▁▁▁\n\n\ngen_hlth\n0\n1\n2.51\n1.07\n1\n2\n2\n3\n5\n▅▇▇▃▁\n\n\nment_hlth\n0\n1\n3.18\n7.41\n0\n0\n0\n2\n30\n▇▁▁▁▁\n\n\nphys_hlth\n0\n1\n4.24\n8.72\n0\n0\n0\n3\n30\n▇▁▁▁▁\n\n\ndiff_walk\n0\n1\n0.17\n0.37\n0\n0\n0\n0\n1\n▇▁▁▁▂\n\n\nsex\n0\n1\n0.44\n0.50\n0\n0\n0\n1\n1\n▇▁▁▁▆\n\n\nage\n0\n1\n8.03\n3.05\n1\n6\n8\n10\n13\n▂▃▇▇▆\n\n\neducation\n0\n1\n5.05\n0.99\n1\n4\n5\n6\n6\n▁▁▅▅▇\n\n\nincome\n0\n1\n6.05\n2.07\n1\n5\n7\n8\n8\n▁▁▃▂▇\n\n\n\n\nanyNA(df)\n\n[1] FALSE\n\n\nThe skim() output above shows summary statistics for each variable. Most notably, all variables are complete, as anyNA(df) returns FALSE, indicating no missing data."
+  },
+  {
+    "objectID": "EDA.html#univariate-exploration",
+    "href": "EDA.html#univariate-exploration",
+    "title": "EDA for Diabetes Prediction",
+    "section": "3. Univariate Exploration",
+    "text": "3. Univariate Exploration\n\ndf %&gt;%\n  count(diabetes_binary) %&gt;%\n  ggplot(aes(x = diabetes_binary, y = n, fill = diabetes_binary)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Distribution of Diabetes Cases\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\ndf %&gt;%\n  count(high_bp) %&gt;%\n  ggplot(aes(x = high_bp, y = n, fill = high_bp)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Distribution of High Blood Pressure\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\ndf %&gt;%\n  count(smoker) %&gt;%\n  ggplot(aes(x = smoker, y = n, fill = smoker)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Distribution of Smoking Status\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\ndf %&gt;%\n  count(phys_activity) %&gt;%\n  ggplot(aes(x = phys_activity, y = n, fill = phys_activity)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Distribution of Physical Activity\", y = \"Count\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "EDA.html#bivariate-exploration",
+    "href": "EDA.html#bivariate-exploration",
+    "title": "EDA for Diabetes Prediction",
+    "section": "4. Bivariate Exploration",
+    "text": "4. Bivariate Exploration\n\nHigh Blood Pressure\n\ndf %&gt;%\n  count(high_bp, diabetes_binary) %&gt;%\n  ggplot(aes(high_bp, n, fill = diabetes_binary)) +\n  geom_bar(stat = \"identity\", position = \"fill\") +\n  labs(y = \"Proportion\", title = \"Diabetes by High Blood Pressure\") +\n  theme_minimal()\n\n\n\n\nWe observe that individuals with high blood pressure are more likely to have diabetes.\n\n\nSmoking\n\ndf %&gt;%\n  count(smoker, diabetes_binary) %&gt;%\n  ggplot(aes(smoker, n, fill = diabetes_binary)) +\n  geom_bar(stat = \"identity\", position = \"fill\") +\n  labs(y = \"Proportion\", title = \"Diabetes by Smoking Status\") +\n  theme_minimal()\n\n\n\n\nWhile the relationship is weaker, smokers appear slightly more likely to have diabetes than non-smokers.\n\n\nPhysical Activity\n\ndf %&gt;%\n  count(phys_activity, diabetes_binary) %&gt;%\n  ggplot(aes(phys_activity, n, fill = diabetes_binary)) +\n  geom_bar(stat = \"identity\", position = \"fill\") +\n  labs(y = \"Proportion\", title = \"Diabetes by Physical Activity\") +\n  theme_minimal()\n\n\n\n\nEngaging in physical activity appears to reduce the likelihood of diabetes.\n\nClick here for the Modeling Page"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Final Project: Diabetes Prediction",
+    "section": "",
+    "text": "Welcome! This is the project website for my final project on Diabetes Prediction\nusing the 2015 BRFSS dataset and a logistic regression model.\n\n\n\nEDA for Diabetes Prediction\nModeling and Results\n\n\n\n\nThe REST API is built with the plumber package in R.\nYou can try it locally using:\nlibrary(plumber)\napi &lt;- pr(\"plumber.R\")\napi$run(port = 8000)\nThen go to: http://127.0.0.1:8000/docs/\nAuthor Koji Takagi GitHub Pages: https://kojitakagi.github.io/final-project"
+  },
+  {
+    "objectID": "index.html#project-components",
+    "href": "index.html#project-components",
+    "title": "Final Project: Diabetes Prediction",
+    "section": "",
+    "text": "EDA for Diabetes Prediction\nModeling and Results"
+  },
+  {
+    "objectID": "index.html#api-access",
+    "href": "index.html#api-access",
+    "title": "Final Project: Diabetes Prediction",
+    "section": "",
+    "text": "The REST API is built with the plumber package in R.\nYou can try it locally using:\nlibrary(plumber)\napi &lt;- pr(\"plumber.R\")\napi$run(port = 8000)\nThen go to: http://127.0.0.1:8000/docs/\nAuthor Koji Takagi GitHub Pages: https://kojitakagi.github.io/final-project"
+  },
+  {
+    "objectID": "Modeling.html",
+    "href": "Modeling.html",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "",
+    "text": "In this document, we model the probability of diabetes using health indicators from the 2015 BRFSS dataset. We use logistic regression, classification trees, and random forests to model the binary outcome diabetes_binary. Our goal is to identify the best-performing model using 5-fold cross-validation and logLoss as the performance metric."
+  },
+  {
+    "objectID": "Modeling.html#introduction",
+    "href": "Modeling.html#introduction",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "",
+    "text": "In this document, we model the probability of diabetes using health indicators from the 2015 BRFSS dataset. We use logistic regression, classification trees, and random forests to model the binary outcome diabetes_binary. Our goal is to identify the best-performing model using 5-fold cross-validation and logLoss as the performance metric."
+  },
+  {
+    "objectID": "Modeling.html#data-preparation",
+    "href": "Modeling.html#data-preparation",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "2. Data Preparation",
+    "text": "2. Data Preparation\n\ndf &lt;- read_csv(\"diabetes_binary_health_indicators_BRFSS2015.csv\") %&gt;%\n  clean_names() %&gt;%\n  mutate(\n    diabetes_binary = factor(diabetes_binary, labels = c(\"No\", \"Yes\")),\n    high_bp = factor(high_bp),\n    smoker = factor(smoker),\n    phys_activity = factor(phys_activity),\n    bmi = as.numeric(bmi),\n    high_chol = factor(high_chol),\n    chol_check = factor(chol_check),\n    heart_diseaseor_attack = factor(heart_diseaseor_attack),\n    stroke = factor(stroke)\n  )\n\n# Split data\nset.seed(2025)\ntrain_idx &lt;- createDataPartition(df$diabetes_binary, p = 0.7, list = FALSE)\ntrain_data &lt;- df[train_idx, ]\ntest_data  &lt;- df[-train_idx, ]"
+  },
+  {
+    "objectID": "Modeling.html#logistic-regression",
+    "href": "Modeling.html#logistic-regression",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "3. Logistic Regression",
+    "text": "3. Logistic Regression\n\nExplanation\nA logistic regression model is suitable for binary outcomes, such as predicting diabetes status. It estimates the log-odds of the outcome as a linear combination of the predictors.\n\n\nModel Fitting\n\nctrl &lt;- trainControl(method = \"cv\", number = 5, classProbs = TRUE, summaryFunction = mnLogLoss)\n\nlogit_model1 &lt;- train(diabetes_binary ~ high_bp + smoker + phys_activity,\n                      data = train_data, method = \"glm\", family = \"binomial\",\n                      trControl = ctrl, metric = \"logLoss\")\n\nlogit_model2 &lt;- train(diabetes_binary ~ high_bp + bmi + phys_activity,\n                      data = train_data, method = \"glm\", family = \"binomial\",\n                      trControl = ctrl, metric = \"logLoss\")\n\nlogit_model3 &lt;- train(diabetes_binary ~ high_bp + bmi + high_chol + chol_check,\n                      data = train_data, method = \"glm\", family = \"binomial\",\n                      trControl = ctrl, metric = \"logLoss\")\n\n\n\nBest Logistic Model\n\nlogit_models &lt;- list(Model1 = logit_model1, Model2 = logit_model2, Model3 = logit_model3)\nsapply(logit_models, function(m) min(m$results$logLoss))\n\n   Model1    Model2    Model3 \n0.3646704 0.3547407 0.3475828 \n\nlogit_model &lt;- logit_model3  # Assuming this one has the lowest logLoss\n\nThe model using high_bp, bmi, high_chol, and chol_check (Model 3) achieved the lowest logLoss and is selected as the best logistic regression model."
+  },
+  {
+    "objectID": "Modeling.html#classification-tree",
+    "href": "Modeling.html#classification-tree",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "4. Classification Tree",
+    "text": "4. Classification Tree\n\nExplanation\nClassification trees split the data based on predictor values to create homogeneous subgroups. They are easy to interpret but prone to overfitting.\n\n\nModel Fitting\n\ntree_grid &lt;- expand.grid(cp = seq(0.001, 0.05, length.out = 10))\ntree_model &lt;- train(\n  diabetes_binary ~ high_bp + bmi + high_chol + chol_check + heart_diseaseor_attack + stroke,\n  data = train_data,\n  method = \"rpart\",\n  trControl = ctrl,\n  tuneGrid = tree_grid,\n  metric = \"logLoss\"\n)\n\n\n\nVisualization\n\nrpart.plot(tree_model$finalModel)"
+  },
+  {
+    "objectID": "Modeling.html#random-forest",
+    "href": "Modeling.html#random-forest",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "5. Random Forest",
+    "text": "5. Random Forest\n\nExplanation\nA random forest builds multiple decision trees using bootstrapped samples and random subsets of predictors, improving stability and accuracy.\n\n\nModel Fitting\n\nrf_grid &lt;- expand.grid(mtry = 2:4)\nrf_model &lt;- train(\n  diabetes_binary ~ high_bp + bmi + high_chol + chol_check + heart_diseaseor_attack + stroke,\n  data = train_data,\n  method = \"rf\",\n  trControl = ctrl,\n  tuneGrid = rf_grid,\n  metric = \"logLoss\",\n  ntree = 100\n)"
+  },
+  {
+    "objectID": "Modeling.html#final-model-comparison",
+    "href": "Modeling.html#final-model-comparison",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "6. Final Model Comparison",
+    "text": "6. Final Model Comparison\n\nlogit_prob &lt;- predict(logit_model, newdata = test_data, type = \"prob\")[, \"Yes\"]\ntree_prob  &lt;- predict(tree_model,  newdata = test_data, type = \"prob\")[, \"Yes\"]\nrf_prob    &lt;- predict(rf_model,    newdata = test_data, type = \"prob\")[, \"Yes\"]\n\ny_true &lt;- ifelse(test_data$diabetes_binary == \"Yes\", 1, 0)\n\nresults &lt;- tibble(\n  Model = c(\"Logistic Regression\", \"Classification Tree\", \"Random Forest\"),\n  LogLoss = c(\n    LogLoss(logit_prob, y_true),\n    LogLoss(tree_prob, y_true),\n    LogLoss(rf_prob, y_true)\n  )\n)\n\nresults\n\n# A tibble: 3 × 2\n  Model               LogLoss\n  &lt;chr&gt;                 &lt;dbl&gt;\n1 Logistic Regression   0.347\n2 Classification Tree   0.358\n3 Random Forest         3.86"
+  },
+  {
+    "objectID": "Modeling.html#final-thoughts",
+    "href": "Modeling.html#final-thoughts",
+    "title": "Modeling for Diabetes Prediction",
+    "section": "7. Final Thoughts",
+    "text": "7. Final Thoughts\nBased on logLoss on the test set, we select the model with the lowest logLoss as the final model for deployment or interpretation. According to the comparison, the Logistic Regression model had the best performance.\n\nBack to EDA Page"
+  }
+]
