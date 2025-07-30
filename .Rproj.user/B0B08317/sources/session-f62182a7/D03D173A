@@ -3,7 +3,7 @@
     "path": "C:/Users/KojiTakagi/Dropbox/Koji/Master of  Statistics/ST 558/Final Project/final-project/Modeling.qmd",
     "project_path": "Modeling.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "1527640486",
     "contents": "",
     "dirty": false,
     "created": 1753740429912.0,
@@ -19,14 +19,15 @@
         "scrollLine": "0",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "345:258.79998779296875"
+        "rmdVisualModeLocation": "345:258.79998779296875",
+        "last_setup_crc32": "f62182a7420f9519"
     },
     "folds": "",
     "lastKnownWriteTime": 1753746341,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1753746341306,
+    "last_content_update": 1753865667928,
     "read_only": false,
     "read_only_alternatives": []
 }
